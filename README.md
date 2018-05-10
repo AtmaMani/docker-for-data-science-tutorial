@@ -1,3 +1,35 @@
+# Atma's notes
+ - Docker_host - the kernal that runs docker commands
+ - client - your terminal
+ - Docker Hub - is like github that contains docker projects, images etc.
+
+## Docker commands
+ - `docker pull <image name>`
+ - `docker images` to list all images
+ - `docker run -options <image name>` can run docker images, `-i` and `-t` are flags for running image interactively in the terminal.
+ - `ctrl + P + Q` to detach from a running container. It is still running in background
+ - `docker ps` to list running containers
+ - `docker stop <continer name>` to stop a container
+ - `docker ps -a` to list all, including stopped containers.
+ - `docker rm <container name>` to remove a stopped container (not image)
+ - `docker rmi <image name>` to delete a docker image. You might have to add `-f` to force it if you have not removed the container associated with the image.
+ - `docker login` to login to docker hub on local terminal
+ - `docker push <username>/<imagename>` to push your image to the hub.
+
+## Dockerfile commands (building docker images)
+ - You create docker images on top of existing images. You create a `Dockerfile` which contains the recipe - of base image, data to copy and functions to run upon instantiation
+ - `docker build -t <image_name> <path to docker file>` to create an image
+ - `docker start -ia [container-name OR container-id]` to restart a stopped container. `-i` attaches `STDIN` and `-a` attaches `STDOUT/STDERR` to terminal
+
+## Persistance
+ - any files created in a running container, remains there for that session. You can `stop` a container and then later `start` it back up. The files remain.
+ - If you `remove`d the container, then all files created in container filesystem are removed.
+ - best practice is to `mount` a network dir or local host dir and IO into files on the mount, instead of container file system.
+
+## DOCKER COMPOSE
+ - alternate to Docker, built by Docker using Python
+ - takes a **declarative** approach. You define all build time and runtime settings in a `yml` file. Hence running it becomes very easy.
+
 # Docker for Data Science
 
 ![Alt text](./_materials/build_passing.svg)
